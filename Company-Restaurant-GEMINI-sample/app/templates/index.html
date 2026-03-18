@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="사내 식당 메뉴 추천 앱">
+    <title>사내 메뉴 추천기</title>
+    <!-- 구글 폰트 적용 (Modern Typography) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="app-header">
+        <h1>식당 메뉴 추천</h1>
+    </header>
+
+    <main class="container">
+        <!-- 왼쪽: 메뉴 추천 섹션 -->
+        <section class="menu-section">
+            <div class="section-header">
+                <h2>오늘의 추천 메뉴</h2>
+                <button id="refresh-btn" class="btn primary-btn">추천 새로고침</button>
+            </div>
+            <div id="menu-container" class="menu-container">
+                <p class="placeholder-text">메뉴를 불러오는 중입니다...</p>
+            </div>
+        </section>
+
+        <!-- 오른쪽: 알레르기/피드백 섹션 -->
+        <aside class="settings-section">
+            <div class="panel">
+                <h2>내 알레르기 정보 설정</h2>
+                <p class="desc">체크한 성분이 포함된 메뉴는 추천에서 제외됩니다.</p>
+                <form id="allergy-form" class="allergy-form">
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="대두"> 대두</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="밀"> 밀</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="새우"> 새우</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="계란"> 계란</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="땅콩"> 땅콩</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="생선"> 생선(연어 등)</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="돼지고기"> 돼지고기</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergy" value="우유"> 우유</label>
+                    <button type="submit" class="btn secondary-btn submit-btn">설정 저장</button>
+                    <div id="allergy-alert" class="alert hidden">저장되었습니다.</div>
+                </form>
+            </div>
+            
+            <div class="panel info-panel">
+                <h3>앱 안내사항</h3>
+                <p>- 환경을 지키는 <strong>잔반 제로</strong> 캠페인을 실천해 주세요!</p>
+                <p>- 식사를 마친 후 꼭 각 메뉴 카드의 <strong>피드백 버튼</strong>을 눌러주세요.</p>
+            </div>
+        </aside>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

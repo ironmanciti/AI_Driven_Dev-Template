@@ -1,0 +1,274 @@
+:root {
+    /* UI-design-rules.md를 바탕으로 정의된 CSS 변수 */
+    --bg-color: #08090A;
+    --panel-color: #111214;
+    --text-primary: #F7F8F8;
+    --text-secondary: #9C9DA1;
+    --accent-color: #5E6AD2;
+    --danger-color: #FF4D4D;
+    --success-color: #4DFFAD;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --transition: 200ms ease-in-out;
+    --radius-standard: 8px;
+    --radius-large: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    display: flex; /* Sidebar layout을 위한 flex 추가 */
+    min-height: 100vh;
+}
+
+/* Sidebar 스타일 */
+.sidebar {
+    width: 240px;
+    background-color: var(--panel-color);
+    border-right: 1px solid var(--border-color);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar-logo {
+    padding: 0 24px 24px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 16px;
+}
+
+.nav-list {
+    list-style: none;
+}
+
+.nav-item {
+    padding: 10px 24px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 14px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.nav-item.active {
+    color: var(--accent-color);
+    background: rgba(94, 106, 210, 0.1);
+    font-weight: 500;
+}
+
+/* 메인 컨텐츠 영역 */
+.content {
+    flex: 1;
+    margin-left: 240px;
+    padding: 40px;
+    max-width: 1000px;
+}
+
+.view-container {
+    display: none; /* 기본적으로 모든 뷰는 숨김 */
+}
+
+.view-container.active {
+    display: block; /* 활성화된 뷰만 표시 */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 주간 식단표 특화 스타일 */
+.weekly-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.day-section h2 {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+/* 마이페이지/관리자용 테이블 스타일 */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel-color);
+    border-radius: var(--radius-standard);
+    overflow: hidden;
+}
+
+.data-table th, .data-table td {
+    padding: 12px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.data-table tr:hover {
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.login-section {
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-standard);
+    padding: 24px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+input {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    padding: 8px 12px;
+    outline: none;
+    transition: var(--transition);
+}
+
+input:focus {
+    border-color: var(--accent-color);
+}
+
+button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.employee-info {
+    margin-top: 16px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.menu-card {
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    padding: 24px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.menu-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.menu-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.menu-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.calories {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.allergy-tag {
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--text-secondary);
+}
+
+.allergy-warning {
+    border-color: var(--danger-color) !important;
+    background: rgba(255, 77, 77, 0.05);
+}
+
+.warning-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--danger-color);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
